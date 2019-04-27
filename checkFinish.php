@@ -6,7 +6,7 @@
 
     if($finishedTask == 0) {
         $sql = "UPDATE items SET finishedTask='1' WHERE id='$id'";
-    } elseif ($finishedTask == 1) {
+    } else {
         $sql = "UPDATE items SET finishedTask='0' WHERE id='$id'";
     }
 

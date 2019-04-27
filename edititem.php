@@ -1,11 +1,13 @@
 <?php
     include 'connection.php';
-    $itemname = $_POST['itemName'];
-    $listId = $_GET['listId'];
+    $id = $_GET['id'];
+    $listId = $_GET['listID'];
     $listName = $_GET['listName'];
-    $sql = "INSERT INTO items (name, listId) VALUES ('$itemname', '$listId')";
+    $newItemName = $_POST['newitemname'];
+    $sql = "UPDATE items SET name='$newItemName' WHERE id='$id'";
     if ($db->query($sql) === TRUE) {
         header("location: list.php?listID=$listId&listName=$listName");
+
     } else {
         echo "Error: " . $sql . "<br>" . $db->error;
     }
