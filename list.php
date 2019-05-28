@@ -44,7 +44,7 @@
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         echo '
-                        <div id="editModal" class="modal">
+                        <div id="editModal' . $row['id'] . '" class="modal">
                             <form action="edititem.php?id=' . $row['id'] . '&listID=' . $listID . '&listName=' . $listName . '" method="post">
                             <div class="modal-content">
                                 <h4>Edit Task</h4>
@@ -67,7 +67,7 @@
                                 <p>
                                     <label>
                                         <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" />
-                                        <span id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal"> <i class="fas fa-edit"></i></a></span>
+                                        <span id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal' . $row['id'] . '"> <i class="fas fa-edit"></i></a></span>
                                     </label>
                                 </p>
                             </div>';
