@@ -4,9 +4,6 @@
     $sql = "SELECT * FROM lists";
     $result = $db->query($sql);
 
-    if(isset($_POST['checkFinish'])) {
-        header("Location: connection.php");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -42,9 +39,9 @@
             <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo '
-                        <div id="editModal' . $row['listID'] . '" class="modal">
-                            <form action="editlist.php?listID=' . $row['listID'] . '" method="post">
+            ?>
+                        <div id="editModal<?= $row['listID'] ?>" class="modal">
+                            <form action="editlist.php?listID=<?= $row['listID'] ?>" method="post">
                                 <div class="modal-content">
                                     <h4>Edit List</h4>
                                     <div class="row">
@@ -59,11 +56,10 @@
                                 </div>
                             </form>
                         </div>
-                        ';
-                        echo '
                         <div style="padding-bottom:5px;" id="toDoItem">
-                            <h6><a href="list.php?listID='.$row['listID'].'&listName=' . $row['listName'] . '" id="toDoTitle">' . $row['listName'] . '</a><a href="deletelist.php?listID='.$row['listID'].'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?listID=' . $row['listID'] . '" data-target="editModal' . $row['listID'] . '"> <i class="fas fa-edit"></i></a></h6>
-                        </div>';
+                            <h6><a href="list.php?listID=<?= $row['listID'] ?>&listName=<?= $row['listName'] ?>" id="toDoTitle"><?= $row['listName'] ?></a><a href="deletelist.php?listID=<?= $row['listID'] ?>"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?listID=<?= $row['listID'] ?>" data-target="editModal<?= $row['listID'] ?>"> <i class="fas fa-edit"></i></a></h6>
+                        </div>
+                <?php
                     }
                 } else {
                     echo '

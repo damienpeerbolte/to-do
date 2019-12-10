@@ -40,6 +40,13 @@
                     </div>
                 </form>
             </div>
+            <form method="post">
+                <select style="display:block !important;" name="" onchange="sortList(this.value)">
+                    <option value="0">Finished/Unfinished</option>
+                    <option value="1">Finished</option>
+                    <option value="2">Unfinished</option>
+                </select>
+            </form>
             <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
@@ -63,23 +70,27 @@
                         ';
                         if($row['finishedTask'] == 0) {
                             echo '
-                            <div id="toDoItem">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" />
-                                        <span id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal' . $row['id'] . '"> <i class="fas fa-edit"></i></a></span>
-                                    </label>
-                                </p>
+                            <div id="itemContainer">
+                                <div id="toDoItem">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" />
+                                            <span id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'&listID='.$listID.'&listName='.$listName.'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal' . $row['id'] . '"> <i class="fas fa-edit"></i></a></span>
+                                        </label>
+                                    </p>
+                                </div>
                             </div>';
                         } elseif ($row['finishedTask'] == 1) {
                             echo '
-                            <div id="toDoItem">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" checked />
-                                        <span style="text-decoration:line-through;" id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal"> <i class="fas fa-edit"></i></a></span>
-                                    <label>
-                                </p>
+                            <div class="itemController">
+                                <div id="toDoItem">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" checked />
+                                            <span style="text-decoration:line-through;" id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'&listID='.$listID.'&listName='.$listName.'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal"> <i class="fas fa-edit"></i></a></span>
+                                        <label>
+                                    </p>
+                                </div>
                             </div>';
                         } else {
                             echo 'An unknown error has occured!';
