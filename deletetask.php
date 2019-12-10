@@ -6,7 +6,6 @@
     $sql = "DELETE FROM items WHERE id='$id'";
     if ($db->query($sql) === TRUE) {
         header("location: list.php?listID=$listId&listName=$listName");
-        // header("location: index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $db->error;
     }

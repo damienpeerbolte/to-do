@@ -74,7 +74,7 @@
                                 <div id="toDoItem">
                                     <p>
                                         <label>
-                                            <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" />
+                                            <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '&listID='.$listID.'&listName='.$listName.'` name="finishCheck" />
                                             <span id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'&listID='.$listID.'&listName='.$listName.'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal' . $row['id'] . '"> <i class="fas fa-edit"></i></a></span>
                                         </label>
                                     </p>
@@ -86,7 +86,7 @@
                                 <div id="toDoItem">
                                     <p>
                                         <label>
-                                            <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '` name="finishCheck" checked />
+                                            <input type="checkbox" onchange=window.location.href=`checkFinish.php?id=' . $row['id'] . "&finishedTask=" . $row['finishedTask'] . '&listID='.$listID.'&listName='.$listName.'` name="finishCheck" checked />
                                             <span style="text-decoration:line-through;" id="toDoTitle">' . $row['name'] . '<a href="deletetask.php?id='.$row['id'].'&listID='.$listID.'&listName='.$listName.'"> <i class="fas fa-trash"> </i></a><a class="modal-trigger" href="index.php?id=' . $row['id'] . '" data-target="editModal"> <i class="fas fa-edit"></i></a></span>
                                         <label>
                                     </p>

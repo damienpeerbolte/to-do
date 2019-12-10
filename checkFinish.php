@@ -2,6 +2,8 @@
     include 'connection.php';
 
     $id = $_GET['id'];
+    $listId = $_GET['listID'];
+    $listName = $_GET['listName'];
     $finishedTask = $_GET['finishedTask'];
 
     if($finishedTask == 0) {
@@ -11,7 +13,7 @@
     }
 
     if ($db->query($sql) === TRUE) {
-        header("location: index.php");
+        header("location: list.php?listID=$listId&listName=$listName");
     } else {
         echo "Error: " . $sql . "<br>" . $db->error;
     }
